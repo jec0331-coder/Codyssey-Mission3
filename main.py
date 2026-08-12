@@ -331,12 +331,12 @@ def GenerateFiltersAndPatternsFromJsonFile():
         size_25_Filter = filters_dict.get("size_25", {})
         # print(size_5_Filter)
         # 라벨 정규화;
-        size_5_Filter["Cross"] = size_5_Filter.pop("cross")
-        size_5_Filter["X"] = size_5_Filter.pop("x")
-        size_13_Filter["Cross"] = size_13_Filter.pop("cross")
-        size_13_Filter["X"] = size_13_Filter.pop("x")
-        size_25_Filter["Cross"] = size_25_Filter.pop("cross")
-        size_25_Filter["X"] = size_25_Filter.pop("x")
+        # size_5_Filter["Cross"] = size_5_Filter.pop("cross")
+        # size_5_Filter["X"] = size_5_Filter.pop("x")
+        # size_13_Filter["Cross"] = size_13_Filter.pop("cross")
+        # size_13_Filter["X"] = size_13_Filter.pop("x")
+        # size_25_Filter["Cross"] = size_25_Filter.pop("cross")
+        # size_25_Filter["X"] = size_25_Filter.pop("x")
 
         #
         patternData = data.get("patterns", {})
@@ -345,15 +345,40 @@ def GenerateFiltersAndPatternsFromJsonFile():
             content["name"] = name  # 딕셔너리 내부에 "name": "size_5_1" 쌍을 새로 추가
 
             # 라벨 정규화;
-            if content["expected"] == "+":
-                content["expected"] = "Cross"
-            elif content["expected"] == "x":
-                content["expected"] = "X"
+            # if content["expected"] == "+":
+            #    content["expected"] = "Cross"
+            # elif content["expected"] == "x":
+            #    content["expected"] = "X"
 
             patternList.append(content)
 
         # for patternDict in patterns_dicts:
         #    dict
+        # 라벨 정규화;
+        NormalizeLabel()
+
+
+# 라벨 정규화 함수
+def NormalizeLabel():
+    global patternList
+    global size_5_Filter
+    global size_13_Filter
+    global size_25_Filter
+
+    # filter
+    size_5_Filter["Cross"] = size_5_Filter.pop("cross")
+    size_5_Filter["X"] = size_5_Filter.pop("x")
+    size_13_Filter["Cross"] = size_13_Filter.pop("cross")
+    size_13_Filter["X"] = size_13_Filter.pop("x")
+    size_25_Filter["Cross"] = size_25_Filter.pop("cross")
+    size_25_Filter["X"] = size_25_Filter.pop("x")
+
+    # pattern
+    for pattern in patternList:
+        if pattern["expected"] == "+":
+            pattern["expected"] = "Cross"
+        elif pattern["expected"] == "x":
+            pattern["expected"] = "X"
 
 
 def CheckSizeOfMatrix(matrix1, matrix2):
