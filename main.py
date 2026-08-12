@@ -303,7 +303,7 @@ def GenerateFiltersAndPatternsFromJsonFile():
     global patternList
 
     try:
-        with open("Mission3/data.json", "r", encoding="utf-8") as file:
+        with open("data.json", "r", encoding="utf-8") as file:
             data = json.load(file)
         print("▶ 성공: JSON 파일을 성공적으로 불러왔습니다.\n")
     except FileNotFoundError:
