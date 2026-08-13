@@ -171,7 +171,7 @@ def CallMode1():
     if abs(scoreA - scoreB) > e:
         # 연산 시간 출력;
         # print("평균 연산 시간 : ", evgTimeA)
-        print(f"연산 시간(평균/10회): {evgTimeA * 1000:.2f} ms")
+        print(f"연산 시간(평균/10회): {evgTimeA * 1000:.4f} ms")
 
         print("#--------------")
         print("#[3] MAC 결과")
