@@ -472,7 +472,7 @@ def CallMode2():
 
         if hasSameSize == False:
             print("패턴의 사이즈가 필터와 맞지 않아 FAIL")
-            pattern["result"] = "isNotSaveSize"
+            pattern["result"] = "isNotSameSize"
             failedPatternIndexList.append(i)
             continue
 
@@ -597,7 +597,7 @@ def CallMode2():
                     ":",
                     "동점(UNDECIDED) 처리 규칙에 따라 FAIL",
                 )
-            elif patternList[failedPatternIndexList[i]]["result"] == "isNotSaveSize":
+            elif patternList[failedPatternIndexList[i]]["result"] == "isNotSameSize":
                 print(
                     patternList[failedPatternIndexList[i]]["name"],
                     ":",
